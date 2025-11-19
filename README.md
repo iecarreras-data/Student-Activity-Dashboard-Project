@@ -57,7 +57,26 @@ Follow these steps to run the entire data pipeline and generate the final dashbo
 
 The scripts in the R folder must be run in numerical order. Each script's output serves as the next script's input.
 
-Run each script in order, then render the final dashboard.
+##### Running the Scripts
+
+Execute each script in order:
+
+source(here::here("R", "01_create_catalog.R"))
+source(here::here("R", "02_build_semester_schedule.R"))
+source(here::here("R", "03_register_students.R"))
+source(here::here("R", "04_simulate_dining.R"))
+source(here::here("R", "05_create_dashboard_data.R"))
+
+Then render the final dashboard:
+
+rmarkdown::render(
+  here::here("R", "06_build_dashboard.Rmd"), 
+  output_file = here::here("output", "student-activity-dashboard.html")
+)
+
+Alternatively, use the helper script to generate both versions at once:
+
+source(here::here("R", "render_both_versions.R"))
 
 ##### Pipeline Details
 
@@ -89,9 +108,9 @@ Run each script in order, then render the final dashboard.
 6.  **06_build_dashboard.Rmd**
     *   **Purpose:** Renders an interactive HTML dashboard with animated visualizations showing campus activity patterns over time
     *   **Input:** data/dashboard_data.rds
-    *   **Output:** output/student_dashboard.html
+    *   **Output:** output/student-activity-dashboard.html
 
-After running all six scripts, open output/student_dashboard.html in your web browser to view the final, interactive dashboard.
+After running all scripts, open output/student-activity-dashboard.html in your web browser to view the final, interactive dashboard.
 
 ---
 
