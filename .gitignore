@@ -1,18 +1,17 @@
 # Gitignore for R Project
 
-# History files
-.Rhistory
-.Rapp.history
+# R data files
+*.rds
+*.RData
+*.Rhistory
 
-# Session Data
-.RData
+# Output files
+output/*.html
+output/libs/
 
-# User-specific files
-.Ruserdata
+# CSV files in data folder
+data/*.csv
 
-# Generated data and output files
-data/
-output/
-
-# R environment files
-.Renviron
+# System files
+.DS_Store
+.Rproj.user
